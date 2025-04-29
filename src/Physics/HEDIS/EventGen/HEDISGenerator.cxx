@@ -13,20 +13,12 @@
 //____________________________________________________________________________
 
 #include "Physics/HEDIS/EventGen/HEDISGenerator.h"
-#include "Physics/Hadronization/LeptoHadronization.h"
 #include "Framework/GHEP/GHepParticle.h"
 #include "Framework/GHEP/GHepRecord.h"
 #include "Framework/Messenger/Messenger.h"
 #include "Framework/Numerical/RandomGen.h"
 #include "Framework/Numerical/MathUtils.h"
 #include "Framework/Conventions/Constants.h"
-
-#include <RVersion.h>
-#if ROOT_VERSION_CODE >= ROOT_VERSION(5,15,6)
-#include <TMCParticle.h>
-#else
-#include <TMCParticle6.h>
-#endif
 
 using namespace genie;
 using namespace genie::utils::math;

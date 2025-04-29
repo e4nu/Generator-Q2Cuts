@@ -19,10 +19,9 @@
 #ifndef _PHOTON_RES_GENERATOR_H_
 #define _PHOTON_RES_GENERATOR_H_
 
-#include <TPythia6.h>
-
 #include "Framework/EventGen/EventRecordVisitorI.h"
-#include "Physics/HELepton/XSection/Born.h"
+
+using namespace genie;
 
 namespace genie {
 
@@ -34,24 +33,18 @@ public :
  ~PhotonRESGenerator();
 
   // implement the EventRecordVisitorI interface
-  void Initialize         (void)               const;
-  void ProcessEventRecord (GHepRecord * evrec) const;
+  void ProcessEventRecord (GHepRecord * event) const;
 
-  // overload the Algorithm::Configure() methods to load private data
+  // Overload the Algorithm::Configure() methods to load private data
   // members from configuration options
-  void Configure(const Registry & config);
-
-  void Configure(string config);
+  virtual void Configure(const Registry & config);
+  virtual void Configure(string config);
 
 private:
 
-  void LoadConfig(void);
+  void LoadConfig         (void);
 
-  mutable TPythia6 * fPythia;   ///< PYTHIA6 wrapper class
-
-  double fQ2PDFmin;
-
-  Born * born;
+  const EventRecordVisitorI * fWDecayer; ///< PYTHIA W decayer
 
 };
 
